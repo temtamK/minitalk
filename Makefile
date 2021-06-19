@@ -6,7 +6,7 @@
 #    By: taemkim <taemkim@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/18 16:51:08 by taemkim           #+#    #+#              #
-#    Updated: 2021/06/18 17:16:48 by taemkim          ###   ########.fr        #
+#    Updated: 2021/06/19 15:43:36 by taemkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,17 +54,20 @@ $(OBJ_PATH)/%.o:  $(SRC_PATH)/%.c $(HDR)
 	@$(COMP)  $(FLAGS) $(H_FLAG)  -o $@ -c $<
 
 $(LIBFT):
-	$(MAKE) all -C libft/
-	@echo "	Compilation of $(libft):  \033[1;32mOK\033[m"
+	@$(MAKE) all -C libft/
+	@echo "	Compilation of  libft :  \033[1;32mOK\033[m"
 
 clean:
 	@rm -rf $(OBJ_PATH)
+	@make clean -C libft/
 	@echo "\033[1;33m>> all .o files are deleted.\033[0m"
 
 fclean: clean
 	@rm -rf $(SERVER)
-	@echo "\033[0;31m>> $(SERVER)all obbjects are deleted.\033[0m"
+	@echo "\033[0;31m>> $(SERVER) all obbjects are deleted.\033[0m"
 	@rm -rf $(CLIENT)
 	@echo "\033[0;31m>> $(CLIENT) all obbjects are deleted.\033[0m"
+	@make fclean -C libft/
+	@echo "\033[0;31m>> libft all obbjects are deleted.\033[0m"
 
 re : fclean all
