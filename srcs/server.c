@@ -6,7 +6,7 @@
 /*   By: taemkim <taemkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 14:07:15 by taemkim           #+#    #+#             */
-/*   Updated: 2021/06/18 16:28:43 by taemkim          ###   ########.fr       */
+/*   Updated: 2021/06/19 20:03:44 by taemkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int		main(void)
 	struct sigaction	bit_on;
 	struct sigaction	bit_off;
 	t_data				*data;
+	char				*str;
 
 	bit_on.sa_sigaction = &bit_on_handler;
 	bit_off.sa_sigaction = &bit_off_handler;
@@ -87,7 +88,8 @@ int		main(void)
 	data = get_data();
 	*data = (t_data){0};
 	ft_putstr_fd("Server PID: ", 1);
-	ft_putstr_fd(ft_itoa(getpid()), 1);
+	ft_putstr_fd(str = ft_itoa(getpid()), 1);
 	ft_putstr_fd("\n", 1);
+	free(str);
 	loop_handler(data);
 }

@@ -6,7 +6,7 @@
 /*   By: taemkim <taemkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 14:07:09 by taemkim           #+#    #+#             */
-/*   Updated: 2021/06/18 17:15:38 by taemkim          ###   ########.fr       */
+/*   Updated: 2021/06/19 19:51:41 by taemkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int		main(int ac, char **av)
 			error_handler(KILL_ERROR);
 		str++;
 	}
+	system("leaks client");
 	if (!send_server(0, server_pid))
 		error_handler(KILL_ERROR);
 	sleep(5);

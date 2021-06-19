@@ -6,16 +6,17 @@
 /*   By: taemkim <taemkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 14:07:28 by taemkim           #+#    #+#             */
-/*   Updated: 2021/06/18 16:28:46 by taemkim          ###   ########.fr       */
+/*   Updated: 2021/06/19 15:55:07 by taemkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-t_data	*get_data()
+t_data	*get_data(void)
 {
 	static t_data	data;
-	return &data;
+
+	return (&data);
 }
 
 void	error_handler(int error)
@@ -23,7 +24,7 @@ void	error_handler(int error)
 	ft_putstr_fd("ERROR!\n", 2);
 	if (error == INVALID_INPUT)
 		ft_putendl_fd("ERROR: WRONG ARGUMENTS\n\
-					USAGE : ./client <pid> <message>\n", 2);
+		USAGE : ./client <pid> <message>\n", 2);
 	else if (error == KILL_ERROR)
 	{
 		ft_putstr_fd("errno code: ", 2);
